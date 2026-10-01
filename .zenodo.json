@@ -3,7 +3,32 @@
   "description": "<p><strong>ProRAG-FL</strong> is a robust, decoupled three-tier trust architecture for federated intrusion detection in heterogeneous Cloud-IoT networks. It addresses three independent attack surfaces: <em>model trust</em> (via Hyperledger Fabric blockchain-anchored update provenance and Byzantine-resilient aggregation), <em>knowledge trust</em> (via deterministic Merkle tree CTI chunk integrity and a 6-point Hard Provenance Filter), and <em>decision trust</em> (via dual-path calibration/Mahalanobis OOD escalation and evidence-grounded structured LLM reasoning).</p><p>This release contains the complete research artifact suite, including dataset adapters for CICIoT2023 and Edge-IIoTset, 12 competitive IDS and FL baseline implementations, 5 adversarial threat models, frozen multi-seed experiment runners (5 seeds: [13, 37, 73, 101, 211]), statistical significance test engines (with Benjamini-Hochberg FDR adjustments), camera-ready LaTeX table and vector figure generators, and an automated 48-check reproducibility audit suite.</p>",
   "creators": [
     {
-      "name": "Mohammadi, Ata"
+      "name": "Mohammadi, Ata",
+      "affiliation": "Department of Computer Engineering, Ta.C., Islamic Azad University, Tabriz, Iran"
+    },
+    {
+      "name": "Derakhshanfard, Nahideh",
+      "affiliation": "Department of Computer Engineering, Ta.C., Islamic Azad University, Tabriz, Iran"
+    },
+    {
+      "name": "Mollanejad, Amir",
+      "affiliation": "Department of Computer Engineering, Aras C., Islamic Azad University, Jolfa, Iran"
+    },
+    {
+      "name": "Pour Haji Kazem, Ali Asghar",
+      "affiliation": "Department of Software Engineering, Faculty of Engineering and Natural Sciences, Istinye University, Istanbul, Turkey"
+    },
+    {
+      "name": "Dadashkhani, Neda",
+      "affiliation": "Computer Programming Program, Vocational School, Istinye University, Istanbul, Turkey"
+    },
+    {
+      "name": "Khoshvaght, Parisa",
+      "affiliation": "Institute of Research and Development, Duy Tan University, Da Nang, Vietnam"
+    },
+    {
+      "name": "Hosseinzadeh, Mehdi",
+      "affiliation": "School of Engineering & Technology, Duy Tan University, Da Nang, Vietnam"
     }
   ],
   "access_right": "open",

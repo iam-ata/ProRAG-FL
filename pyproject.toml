@@ -9,7 +9,13 @@ description = "ProRAG-FL: Blockchain-Anchored Provenance-Aware Retrieval-Augment
 readme = "README.md"
 requires-python = ">=3.11"
 authors = [
-    { name = "ProRAG-FL Research Team" }
+    { name = "Ata Mohammadi" },
+    { name = "Nahideh Derakhshanfard", email = "N.derakhshan@iau.ac.ir" },
+    { name = "Amir Mollanejad" },
+    { name = "Ali Asghar Pour Haji Kazem" },
+    { name = "Neda Dadashkhani" },
+    { name = "Parisa Khoshvaght", email = "parisakhoshvaght@duytan.edu.vn" },
+    { name = "Mehdi Hosseinzadeh", email = "mehdihosseinzadeh@duytan.edu.vn" },
 ]
 dependencies = [
     "torch>=2.0.0",

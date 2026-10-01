@@ -129,7 +129,7 @@ If you use ProRAG-FL in your academic research, please cite:
 
 ```bibtex
 @article{mohammadi2026proragfl,
-  author    = {Mohammadi, Ata},
+  author    = {Mohammadi, Ata and Derakhshanfard, Nahideh and Mollanejad, Amir and Pour Haji Kazem, Ali Asghar and Dadashkhani, Neda and Khoshvaght, Parisa and Hosseinzadeh, Mehdi},
   title     = {ProRAG-FL: Blockchain-Anchored Provenance-Aware Retrieval-Augmented Federated Intrusion Detection for Cloud-IoT Systems},
   journal   = {IEEE Internet of Things Journal},
   year      = {2026},
@@ -139,7 +139,7 @@ If you use ProRAG-FL in your academic research, please cite:
 
 ```bibtex
 @software{mohammadi_2026_proragfl_code,
-  author       = {Mohammadi, Ata},
+  author       = {Mohammadi, Ata and Derakhshanfard, Nahideh and Mollanejad, Amir and Pour Haji Kazem, Ali Asghar and Dadashkhani, Neda and Khoshvaght, Parisa and Hosseinzadeh, Mehdi},
   title        = {ProRAG-FL: Reproducible Research Benchmark and Implementation Artifact},
   month        = sep,
   year         = 2026,

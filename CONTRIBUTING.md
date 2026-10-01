@@ -31,7 +31,7 @@ Because ProRAG-FL is an empirical research artifact supporting peer-reviewed sci
 
 ```bash
 # 1. Clone repository
-git clone https://github.com/atamohammadi/ProRAG-FL.git
+git clone https://github.com/iam-ata/ProRAG-FL.git
 cd ProRAG-FL/Code
 
 # 2. Create and activate Conda environment
