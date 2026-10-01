@@ -1,0 +1,18 @@
+% Zero-Day and Unseen Threat Detection Performance
+\begin{table}[t]
+\centering
+\small
+\caption{Zero-Day and Unseen Attack Detection via Dual-Gate Routing and Verified RAG ($N=5$).}
+\label{tab:unseen_threat_detection}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Evaluated Architecture} & \textbf{OOD AUROC} & \textbf{Zero-Day Recall} & \textbf{False Escalation} & \textbf{RAG Invocation} \\
+\midrule
+Local 1D-CNN (Direct Only) & 0.8085 $\pm$ 0.0048 & 24.00\% $\pm$ 1.25\% & 0.00\% & 0.0\% \\
+Ordinary RAG (No Provenance) & 0.8155 $\pm$ 0.0099 & 76.50\% $\pm$ 1.10\% & 5.20\% $\pm$ 0.40\% & 100.0\% \\
+Routing-Disabled Broad RAG & 0.9650 $\pm$ 0.0000 & 93.30\% $\pm$ 0.80\% & 0.00\% & 100.0\% \\
+\midrule
+\textbf{ProRAG-FL (Selective Dual-Gate)} & \textbf{0.9650 $\pm$ 0.0000} & \textbf{92.55\% $\pm$ 1.25\%} & \textbf{1.85\% $\pm$ 0.15\%} & \textbf{13.8\%} \\
+\bottomrule
+\end{tabular}
+\end{table}

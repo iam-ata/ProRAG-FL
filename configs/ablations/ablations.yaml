@@ -1,0 +1,150 @@
+# ProRAG-FL Phase 13: Architectural Ablation Ladder & Sensitivity Configuration
+# Strictly adheres to:
+# - instructions/24_ABLATION_AND_SENSITIVITY.md
+# - instructions/02_LOCKED_PROPOSED_METHOD.md
+# - instructions/36_PHASE_ACCEPTANCE_GATES.md (P13)
+
+version: "1.0.0"
+description: "Authoritative configuration for the A0-A6 ablation ladder and validation sensitivity sweeps."
+
+# 1. Main Architectural Ablation Ladder Steps (A0 through A6)
+ladder:
+  steps:
+    - step: "A0"
+      name: "FedAvg + 1D-CNN"
+      description: "Plain federated learning without robust aggregation, blockchain, or RAG."
+      fl_aggregation: "fedavg"
+      model_provenance_enabled: false
+      dual_gate_routing_enabled: false
+      force_all_events_escalated: false
+      hybrid_rag_enabled: false
+      knowledge_provenance_enabled: false
+      multifactor_reranking_enabled: false
+      llm_reasoning_enabled: false
+
+    - step: "A1"
+      name: "FedTrimmedAvg + 1D-CNN"
+      description: "Adds coordinate-wise trimmed mean (beta=0.20) for statistical outlier defense."
+      fl_aggregation: "fedtrimmedavg"
+      model_provenance_enabled: false
+      dual_gate_routing_enabled: false
+      force_all_events_escalated: false
+      hybrid_rag_enabled: false
+      knowledge_provenance_enabled: false
+      multifactor_reranking_enabled: false
+      llm_reasoning_enabled: false
+
+    - step: "A2"
+      name: "Provenance-gated FedTrimmedAvg"
+      description: "Adds Hyperledger Fabric cryptographic provenance verification before aggregation."
+      fl_aggregation: "provenance_gated"
+      model_provenance_enabled: true
+      dual_gate_routing_enabled: false
+      force_all_events_escalated: false
+      hybrid_rag_enabled: false
+      knowledge_provenance_enabled: false
+      multifactor_reranking_enabled: false
+      llm_reasoning_enabled: false
+
+    - step: "A3"
+      name: "A2 + Ordinary Hybrid RAG (No Knowledge Provenance)"
+      description: "Adds hybrid vector/lexical RAG + LLM, but without Merkle trees or Hard Provenance Gate."
+      fl_aggregation: "provenance_gated"
+      model_provenance_enabled: true
+      dual_gate_routing_enabled: true
+      force_all_events_escalated: false
+      hybrid_rag_enabled: true
+      knowledge_provenance_enabled: false
+      multifactor_reranking_enabled: false
+      llm_reasoning_enabled: true
+
+    - step: "A4"
+      name: "A2 + Hard Provenance RAG (No Freshness/Corroboration Reranking)"
+      description: "Adds 6-check cryptographic Hard Provenance Gate, but uses unweighted RRF ranking."
+      fl_aggregation: "provenance_gated"
+      model_provenance_enabled: true
+      dual_gate_routing_enabled: true
+      force_all_events_escalated: false
+      hybrid_rag_enabled: true
+      knowledge_provenance_enabled: true
+      multifactor_reranking_enabled: false
+      llm_reasoning_enabled: true
+
+    - step: "A5"
+      name: "Routing-Disabled Broad RAG (100% Events Escalated)"
+      description: "Routing ablation: forces all events to RAG+LLM to quantify selective routing value and latency inflation."
+      fl_aggregation: "provenance_gated"
+      model_provenance_enabled: true
+      dual_gate_routing_enabled: false
+      force_all_events_escalated: true
+      hybrid_rag_enabled: true
+      knowledge_provenance_enabled: true
+      multifactor_reranking_enabled: true
+      llm_reasoning_enabled: true
+
+    - step: "A6"
+      name: "Full ProRAG-FL System"
+      description: "Complete proposed system: Provenance-Gated FL + Selective Dual Gate + Hard Provenance Gate + Multi-Factor Reranking."
+      fl_aggregation: "provenance_gated"
+      model_provenance_enabled: true
+      dual_gate_routing_enabled: true
+      force_all_events_escalated: false
+      hybrid_rag_enabled: true
+      knowledge_provenance_enabled: true
+      multifactor_reranking_enabled: true
+      llm_reasoning_enabled: true
+
+# 2. Validation Sensitivity Grids
+sensitivity:
+  objective:
+    formula: "Score = Macro-F1 - 0.5 * Operational-FPR - 0.1 * RAG-Invocation-Rate"
+    description: "Multi-objective score balancing high zero-day detection with low false positive rate and bounded API invocation."
+
+  grids:
+    beta:
+      description: "Coordinate-wise trimming fraction"
+      values: [0.10, 0.15, 0.20, 0.25]
+      default: 0.20
+
+    tau_c:
+      description: "Calibrated softmax confidence escalation threshold"
+      values: [0.60, 0.70, 0.75, 0.80, 0.85, 0.90]
+      default: 0.80
+
+    tau_m:
+      description: "Mahalanobis distance OOD threshold"
+      values: [3.0, 5.0, 7.5, 10.0, 15.0]
+      default: 5.0
+
+    retrieval_k:
+      description: "Candidate retrieval pool size and verified evidence count"
+      pairs:
+        - { candidates: 10, verified: 3 }
+        - { candidates: 20, verified: 5 }
+        - { candidates: 30, verified: 7 }
+        - { candidates: 50, verified: 10 }
+      default: { candidates: 20, verified: 5 }
+
+    rerank_weights:
+      description: "Simplex weights for multi-factor reranking: (lambda_rrf, lambda_freshness, lambda_corroboration)"
+      simplex:
+        - { lambda_rrf: 1.00, lambda_freshness: 0.00, lambda_corroboration: 0.00 }
+        - { lambda_rrf: 0.80, lambda_freshness: 0.10, lambda_corroboration: 0.10 }
+        - { lambda_rrf: 0.60, lambda_freshness: 0.20, lambda_corroboration: 0.20 }
+        - { lambda_rrf: 0.50, lambda_freshness: 0.25, lambda_corroboration: 0.25 }
+        - { lambda_rrf: 0.34, lambda_freshness: 0.33, lambda_corroboration: 0.33 }
+      default: { lambda_rrf: 0.60, lambda_freshness: 0.20, lambda_corroboration: 0.20 }
+
+# 3. Parameter Freezing & Evaluation Invariant
+freezing:
+  storage_path_template: "artifacts/frozen_parameters/{dataset}/{hash}.yaml"
+  enforce_strict_evaluation_freeze: true
+  forbidden_tuning_flags:
+    - "beta"
+    - "tau_c"
+    - "tau_m"
+    - "top_candidates"
+    - "top_verified"
+    - "lambda_rrf"
+    - "lambda_freshness"
+    - "lambda_corroboration"

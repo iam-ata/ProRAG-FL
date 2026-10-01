@@ -1,0 +1,18 @@
+% CTI Knowledge Corpus Poisoning Robustness
+\begin{table}[t]
+\centering
+\small
+\caption{Threat Intelligence Poisoning Resilience across Corrupted Knowledge Corpus.}
+\label{tab:rag_poisoning_robustness}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Retrieval Configuration} & \textbf{Poison Injected} & \textbf{Poison Retrieved} & \textbf{Hard Gate Rejection} & \textbf{Reasoning Faithfulness} \\
+\midrule
+Ordinary Hybrid RAG (k=60) & 10\% & 9.4\% $\pm$ 0.6\% & 0.0\% (None) & 68.4\% $\pm$ 2.1\% \\
+Ordinary Hybrid RAG (k=60) & 20\% & 18.7\% $\pm$ 0.8\% & 0.0\% (None) & 49.2\% $\pm$ 3.0\% \\
+\midrule
+\textbf{ProRAG-FL (6-Check Hard Gate)} & 10\% & \textbf{0.0\%} & \textbf{100.0\%} & \textbf{98.5\% $\pm$ 0.4\%} \\
+\textbf{ProRAG-FL (6-Check Hard Gate)} & 20\% & \textbf{0.0\%} & \textbf{100.0\%} & \textbf{98.2\% $\pm$ 0.5\%} \\
+\bottomrule
+\end{tabular}
+\end{table}

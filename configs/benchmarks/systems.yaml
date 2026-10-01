@@ -1,0 +1,44 @@
+# ProRAG-FL Phase 14: System and Overhead Benchmarks Configuration
+# Strictly adheres to:
+# - instructions/25_SYSTEMS_BENCHMARKS.md
+# - instructions/36_PHASE_ACCEPTANCE_GATES.md (P14)
+
+version: "1.0.0"
+description: "Authoritative configuration for system-level execution, timing protocols, and resource overhead benchmarking."
+
+timing:
+  warmup_iterations: 10
+  benchmark_iterations: 50
+  gpu_synchronize: true
+  record_cold_start: true
+  percentiles: [50, 90, 95, 99]
+
+components:
+  local_inference:
+    batch_sizes: [1, 32, 64]
+    dataset: "ciciot2023"
+    feature_dim: 46
+
+  federated_learning:
+    client_counts: [3, 5, 10]
+    strategies:
+      - "fedavg"
+      - "fedtrimmedavg"
+      - "provenance_gated"
+
+  fabric_ledger:
+    sample_transaction_count: 50
+    mock_payload_bytes: 4096
+
+  hybrid_rag:
+    top_candidates: 20
+    top_verified: 5
+    merkle_check_required: true
+
+  openai_reasoning:
+    model: "gpt-4o-mini"
+    pricing_config: "configs/openai/pricing.yaml"
+
+  e2e_workload:
+    sample_size: 10000
+    invocation_rates: [0.00, 0.05, 0.138, 0.25, 0.50, 1.00]

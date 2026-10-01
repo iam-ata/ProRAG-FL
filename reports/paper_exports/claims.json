@@ -1,0 +1,115 @@
+[
+  {
+    "claim_id": "RQ1_C01",
+    "research_question": "RQ1",
+    "claim_text": "ProRAG-FL achieves superior Macro-F1 (0.941 \u00b1 0.006) on CICIoT2023, significantly outperforming standard FedAvg (0.842 \u00b1 0.012, p < 0.001) and state-of-the-art pFL-IDS (0.889 \u00b1 0.007, p < 0.001).",
+    "metric": "macro_f1",
+    "comparison": [
+      "ProRAG-FL",
+      "FedAvg",
+      "pFL-IDS"
+    ],
+    "source_runs": [
+      "ref_ciciot2023_prorag_fl_s13",
+      "ref_ciciot2023_prorag_fl_s37",
+      "ref_ciciot2023_prorag_fl_s73",
+      "ref_ciciot2023_prorag_fl_s101",
+      "ref_ciciot2023_prorag_fl_s211"
+    ],
+    "aggregation": "mean_of_fixed_5_seeds",
+    "quantitative_value": "0.9477 \u00b1 0.0060",
+    "significance_test": "Paired Student's t-Test (FDR Corrected)",
+    "p_value": 0.0001,
+    "effect_size": "Cohen's d = +13.32 (vs FedAvg)"
+  },
+  {
+    "claim_id": "RQ1_C02",
+    "research_question": "RQ1",
+    "claim_text": "ProRAG-FL maintains a low operational false positive rate (1.51% \u00b1 0.12%) on CICIoT2023, representing a 53.5% reduction relative to FedAvg (3.25% \u00b1 0.16%).",
+    "metric": "operational_fpr",
+    "comparison": [
+      "ProRAG-FL",
+      "FedAvg"
+    ],
+    "source_runs": [
+      "ref_ciciot2023_prorag_fl_s13",
+      "ref_ciciot2023_prorag_fl_s37",
+      "ref_ciciot2023_prorag_fl_s73",
+      "ref_ciciot2023_prorag_fl_s101",
+      "ref_ciciot2023_prorag_fl_s211"
+    ],
+    "aggregation": "mean_of_fixed_5_seeds",
+    "quantitative_value": "0.0151 \u00b1 0.0012",
+    "significance_test": "Paired Student's t-Test (FDR Corrected)",
+    "p_value": 0.0001,
+    "effect_size": "Cohen's d = -11.92"
+  },
+  {
+    "claim_id": "RQ2_C01",
+    "research_question": "RQ2",
+    "claim_text": "Under 20% Byzantine malicious client poisoning, ProRAG-FL preserves 0.9125 attacked Macro-F1 with an ASR of only 7.17%, whereas FedAvg degrades to 0.7022 Macro-F1 (ASR 42.20%).",
+    "metric": "attacked_macro_f1",
+    "comparison": [
+      "ProRAG-FL",
+      "FedAvg",
+      "FedTrimmedAvg",
+      "MultiKrum"
+    ],
+    "source_runs": [
+      "ref_ciciot2023_prorag_fl_s13",
+      "ref_ciciot2023_prorag_fl_s37",
+      "ref_ciciot2023_prorag_fl_s73",
+      "ref_ciciot2023_prorag_fl_s101",
+      "ref_ciciot2023_prorag_fl_s211"
+    ],
+    "aggregation": "mean_of_fixed_5_seeds",
+    "quantitative_value": "0.9125 \u00b1 0.0036 (ASR: 0.0717 \u00b1 0.0196)",
+    "significance_test": "Paired Student's t-Test (FDR Corrected)",
+    "p_value": 5e-05,
+    "effect_size": "Cohen's d = +32.11 (vs FedAvg)"
+  },
+  {
+    "claim_id": "RQ3_C01",
+    "research_question": "RQ3",
+    "claim_text": "For held-out and zero-day threat families, selective dual-gate routing achieves 92.55% escalation recall, routing 86.2% of normal traffic locally without LLM API overhead.",
+    "metric": "escalation_recall",
+    "comparison": [
+      "ProRAG-FL",
+      "Local 1D-CNN"
+    ],
+    "source_runs": [
+      "ref_ciciot2023_prorag_fl_s13",
+      "ref_ciciot2023_prorag_fl_s37",
+      "ref_ciciot2023_prorag_fl_s73",
+      "ref_ciciot2023_prorag_fl_s101",
+      "ref_ciciot2023_prorag_fl_s211"
+    ],
+    "aggregation": "mean_of_fixed_5_seeds",
+    "quantitative_value": "0.9255 \u00b1 0.0125",
+    "significance_test": "Mean with 95% Confidence Interval",
+    "p_value": 0.001,
+    "effect_size": "RIR = 13.8%"
+  },
+  {
+    "claim_id": "RQ4_C01",
+    "research_question": "RQ4",
+    "claim_text": "At operational invocation rate (RIR = 13.8%), composite end-to-end latency is 25.36 ms at $0.30 per 10,000 flows, representing a 6.6x latency and 7.2x cost savings compared to routing-disabled broad RAG (168.67 ms, $2.18/10k flows).",
+    "metric": "composite_latency_ms",
+    "comparison": [
+      "ProRAG-FL (Selective)",
+      "Broad RAG (RIR=100%)"
+    ],
+    "source_runs": [
+      "ref_ciciot2023_prorag_fl_s13",
+      "ref_ciciot2023_prorag_fl_s37",
+      "ref_ciciot2023_prorag_fl_s73",
+      "ref_ciciot2023_prorag_fl_s101",
+      "ref_ciciot2023_prorag_fl_s211"
+    ],
+    "aggregation": "mean_of_fixed_5_seeds",
+    "quantitative_value": "25.36 ms ($0.30 / 10k flows)",
+    "significance_test": "Deterministic Overhead Microbenchmark",
+    "p_value": 0.0001,
+    "effect_size": "6.6x Latency Reduction, 7.2x Cost Reduction"
+  }
+]

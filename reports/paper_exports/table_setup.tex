@@ -1,0 +1,22 @@
+% Experimental Setup and Dataset Specifications
+\begin{table}[t]
+\centering
+\small
+\caption{Benchmark Dataset Attributes, Partitioning, and Threat Model Parameters.}
+\label{tab:experimental_setup}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Configuration Attribute} & \textbf{CICIoT2023} & \textbf{Edge-IIoTset} \\
+\midrule
+Total Raw Network Flows & 1,000,000 & 500,000 \\
+Feature Dimension ($D$) & 46 & 61 \\
+Number of Attack Classes ($C$) & 34 (incl. Benign) & 15 (incl. Benign) \\
+Train / Val / Test Split Ratio & 70\% / 10\% / 20\% & 70\% / 10\% / 20\% \\
+Client Partitioning & Dirichlet Non-IID ($\alpha = 0.3$) & Dirichlet Non-IID ($\alpha = 0.3$) \\
+Participating Clients ($K$) & 10 (3 to 50 in Scalability) & 10 (3 to 50 in Scalability) \\
+Global FL Rounds / Local Epochs & 10 rounds / 2 epochs & 10 rounds / 2 epochs \\
+Byzantine Fraction ($f$) & 20\% ($f \in [0.0, 0.4]$) & 20\% ($f \in [0.0, 0.4]$) \\
+Fixed Random Seed Set & \multicolumn{2}{c}{$[13, 37, 73, 101, 211]$ ($N=5$)} \\
+\bottomrule
+\end{tabular}
+\end{table}

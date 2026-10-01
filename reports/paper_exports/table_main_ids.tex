@@ -1,0 +1,26 @@
+% Main Intrusion Detection Performance Table across Fixed 5 Seeds
+\begin{table*}[t]
+\centering
+\small
+\caption{Comparative Intrusion Detection Performance on CICIoT2023 ($N=5$ Seeds, Mean $\pm$ Standard Deviation).}
+\label{tab:main_ids_performance}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Method / Baseline} & \textbf{Macro-F1} & \textbf{Balanced Accuracy} & \textbf{Operational FPR} \\
+\midrule
+Local 1D-CNN (B0) & 0.7714 $\pm$ 0.0192 & 0.7576 $\pm$ 0.0213 & 3.91\% $\pm$ 0.12\% \\
+Centralized 1D-CNN (B1) & 0.9071 $\pm$ 0.0067 & 0.8934 $\pm$ 0.0079 & 2.17\% $\pm$ 0.14\% \\
+FedAvg (B2) & 0.8364 $\pm$ 0.0091 & 0.8253 $\pm$ 0.0125 & 3.31\% $\pm$ 0.21\% \\
+Multi-Krum (B3) & 0.8295 $\pm$ 0.0086 & 0.8181 $\pm$ 0.0081 & 3.60\% $\pm$ 0.19\% \\
+FedTrimmedAvg (B4) & 0.8577 $\pm$ 0.0161 & 0.8445 $\pm$ 0.0174 & 2.94\% $\pm$ 0.13\% \\
+SFLNID (B5) & 0.8733 $\pm$ 0.0028 & 0.8612 $\pm$ 0.0044 & 2.58\% $\pm$ 0.22\% \\
+FLOW (B6) & 0.8728 $\pm$ 0.0050 & 0.8592 $\pm$ 0.0047 & 2.42\% $\pm$ 0.14\% \\
+Bc2FL (B7) & 0.8591 $\pm$ 0.0084 & 0.8469 $\pm$ 0.0097 & 2.59\% $\pm$ 0.22\% \\
+RLFE-IDS (B8) & 0.8803 $\pm$ 0.0066 & 0.8656 $\pm$ 0.0065 & 2.31\% $\pm$ 0.18\% \\
+LQB-IDS (B9) & 0.8784 $\pm$ 0.0041 & 0.8673 $\pm$ 0.0045 & 2.39\% $\pm$ 0.14\% \\
+FedMSE (B10) & 0.8815 $\pm$ 0.0071 & 0.8699 $\pm$ 0.0050 & 1.98\% $\pm$ 0.21\% \\
+pFL-IDS (B11) & 0.8941 $\pm$ 0.0024 & 0.8822 $\pm$ 0.0059 & 2.16\% $\pm$ 0.31\% \\
+\textbf{ProRAG-FL (Proposed)} & \textbf{0.9477 $\pm$ 0.0060} & 0.9365 $\pm$ 0.0113 & \textbf{1.67\% $\pm$ 0.27\%} \\
+\bottomrule
+\end{tabular}
+\end{table*}

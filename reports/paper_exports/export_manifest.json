@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-09-28T18:08:55.411930+00:00",
+  "compliance_gate": "Acceptance Gate P16 (Generated Tables/Figures & Claims Traceability)",
+  "master_parquet_path": "reports/results_master.parquet",
+  "master_csv_path": "reports/results_master.csv",
+  "tables_generated": [
+    "reports/paper_exports/table_setup.tex",
+    "reports/paper_exports/table_main_ids.tex",
+    "reports/paper_exports/table_fl_poisoning.tex",
+    "reports/paper_exports/table_unseen_attack.tex",
+    "reports/paper_exports/table_rag_poisoning.tex",
+    "reports/paper_exports/table_ablation.tex",
+    "reports/paper_exports/table_overhead.tex"
+  ],
+  "figures_generated": [
+    "reports/paper_exports/figures/fig_latency_vs_rir.pdf",
+    "reports/paper_exports/figures/fig_latency_vs_rir.png",
+    "reports/paper_exports/figures/fig_ablation_ladder.pdf",
+    "reports/paper_exports/figures/fig_ablation_ladder.png",
+    "reports/paper_exports/figures/fig_byzantine_resilience.pdf",
+    "reports/paper_exports/figures/fig_byzantine_resilience.png",
+    "reports/paper_exports/figures/fig_roc_ood.pdf",
+    "reports/paper_exports/figures/fig_roc_ood.png",
+    "reports/paper_exports/figures/fig_baseline_macro_f1.pdf",
+    "reports/paper_exports/figures/fig_baseline_macro_f1.png",
+    "reports/paper_exports/figures/fig_baseline_pareto.pdf",
+    "reports/paper_exports/figures/fig_baseline_pareto.png",
+    "reports/paper_exports/figures/prorag_architecture_clean.png"
+  ],
+  "claims_count": 5,
+  "claims_file": "reports/paper_exports/claims.json"
+}

@@ -1,0 +1,28 @@
+{
+  "title": "ProRAG-FL: Blockchain-Anchored Provenance-Aware Retrieval-Augmented Federated Intrusion Detection for Cloud-IoT Systems",
+  "description": "<p><strong>ProRAG-FL</strong> is a robust, decoupled three-tier trust architecture for federated intrusion detection in heterogeneous Cloud-IoT networks. It addresses three independent attack surfaces: <em>model trust</em> (via Hyperledger Fabric blockchain-anchored update provenance and Byzantine-resilient aggregation), <em>knowledge trust</em> (via deterministic Merkle tree CTI chunk integrity and a 6-point Hard Provenance Filter), and <em>decision trust</em> (via dual-path calibration/Mahalanobis OOD escalation and evidence-grounded structured LLM reasoning).</p><p>This release contains the complete research artifact suite, including dataset adapters for CICIoT2023 and Edge-IIoTset, 12 competitive IDS and FL baseline implementations, 5 adversarial threat models, frozen multi-seed experiment runners (5 seeds: [13, 37, 73, 101, 211]), statistical significance test engines (with Benjamini-Hochberg FDR adjustments), camera-ready LaTeX table and vector figure generators, and an automated 48-check reproducibility audit suite.</p>",
+  "creators": [
+    {
+      "name": "Mohammadi, Ata"
+    }
+  ],
+  "access_right": "open",
+  "license": "Apache-2.0",
+  "upload_type": "software",
+  "keywords": [
+    "federated learning",
+    "network intrusion detection",
+    "retrieval augmented generation",
+    "blockchain provenance",
+    "hyperledger fabric",
+    "cyber threat intelligence",
+    "out of distribution detection",
+    "cloud iot security",
+    "reproducible research"
+  ],
+  "communities": [
+    {
+      "identifier": "zenodo"
+    }
+  ]
+}

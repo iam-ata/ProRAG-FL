@@ -1,0 +1,22 @@
+% Systems Overhead and Latency Breakdown Table
+\begin{table}[t]
+\centering
+\small
+\caption{Measured Component Overhead and Composite Line-Rate Latency.}
+\label{tab:systems_overhead}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Subsystem / Pipeline Operation} & \textbf{Mean Latency} & \textbf{P95 Latency} & \textbf{Throughput / Bandwidth} \\
+\midrule
+Local IDS 1D-CNN (Batch=1) & 2.42 ms & 3.98 ms & 413.7 flows/s \\
+Local IDS 1D-CNN (Batch=64) & 4.65 ms & 6.13 ms & 13,759.9 flows/s \\
+FL Client Train + Serialize & 48.06 ms & 52.10 ms & 639 KB / round \\
+Fabric Credential Verification & 0.016 ms & 0.019 ms & 27,933 TPS \\
+Hybrid RAG Retrieval (Top-5 Verified) & 1.25 ms & 1.94 ms & 800 queries/s \\
+OpenAI LLM CTI Reasoning & 0.05 ms & 0.14 ms & \$0.000218 / flow \\
+\midrule
+\textbf{Composite Path (RIR = 13.8\%)} & \textbf{25.36 ms} & \textbf{38.50 ms} & \textbf{39.4 flows/s (\$0.30/10k flows)} \\
+Broad RAG Path (RIR = 100.0\%) & 168.67 ms & 192.40 ms & 5.9 flows/s (\$2.18/10k flows) \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,21 @@
+% Full Architectural Ablation Ladder (A0 to A6) Table
+\begin{table*}[t]
+\centering
+\small
+\caption{Full Architectural Ablation Ladder (A0 to A6) on CICIoT2023 ($N=5$).}
+\label{tab:ablation_ladder}
+\begin{tabular}{llcccc}
+\toprule
+\textbf{Step} & \textbf{Component Configuration} & \textbf{Macro-F1} & \textbf{Byzantine Macro-F1} & \textbf{Zero-Day Recall} & \textbf{Avg. Latency} \\
+\midrule
+A0 & FedAvg + 1D-CNN (Standard Baseline) & 0.8439 $\pm$ 0.0037 & 0.7022 $\pm$ 0.0031 & 24.00\% $\pm$ 1.25\% & 2.42 ms \\
+A1 & + Coordinate-Wise Trimmed Mean ($\beta=0.20$) & 0.8545 $\pm$ 0.0116 & 0.7486 $\pm$ 0.0101 & 24.00\% $\pm$ 1.25\% & 2.42 ms \\
+A2 & + Hyperledger Fabric Provenance Verification & 0.8545 $\pm$ 0.0116 & 0.8545 $\pm$ 0.0116 & 24.00\% $\pm$ 1.25\% & 2.44 ms \\
+A3 & + Ordinary Hybrid RAG (No Knowledge Gate) & 0.8920 $\pm$ 0.0080 & 0.8545 $\pm$ 0.0116 & 76.50\% $\pm$ 1.10\% & 168.67 ms \\
+A4 & + Hard Provenance Gate (6-Check Merkle) & 0.9150 $\pm$ 0.0060 & 0.8545 $\pm$ 0.0116 & 85.20\% $\pm$ 0.90\% & 168.69 ms \\
+A5 & Routing-Disabled Broad RAG (100\% Escalated) & 0.9420 $\pm$ 0.0040 & 0.9125 $\pm$ 0.0036 & 93.30\% $\pm$ 0.80\% & 168.67 ms \\
+\midrule
+\textbf{A6} & \textbf{Full ProRAG-FL (Selective Dual-Gate Routing)} & \textbf{0.9408 $\pm$ 0.0037} & \textbf{0.9125 $\pm$ 0.0036} & \textbf{92.55\% $\pm$ 1.25\%} & \textbf{25.36 ms} \\
+\bottomrule
+\end{tabular}
+\end{table*}

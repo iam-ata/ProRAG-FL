@@ -1,0 +1,96 @@
+# ProRAG-FL Smoke Matrix Specification
+# Fast execution subset for integration tests and Acceptance Gate P12 verification
+
+matrix_version: "1.0.0"
+description: "Minimal smoke matrix covering all experiment types E1 through E10"
+
+datasets:
+  - "ciciot2023"
+
+seeds:
+  - 13
+
+experiments:
+  - run_id: "smoke_e1_sanity_b1_centralized"
+    experiment_type: "E1_SANITY"
+    method: "b1_centralized"
+    global_rounds: 1
+    local_epochs: 1
+
+  - run_id: "smoke_e2_hetero_fedavg_a03"
+    experiment_type: "E2_HETEROGENEITY"
+    method: "fedavg"
+    num_clients: 3
+    alpha: 0.3
+    global_rounds: 2
+    local_epochs: 1
+
+  - run_id: "smoke_e3_scale_k5"
+    experiment_type: "E3_SCALABILITY"
+    method: "fedtrimmedavg"
+    num_clients: 5
+    alpha: 0.3
+    global_rounds: 2
+    local_epochs: 1
+
+  - run_id: "smoke_e4_mal_label_flip_f20"
+    experiment_type: "E4_MALICIOUS_CLIENTS"
+    method: "fedtrimmedavg"
+    num_clients: 5
+    attack_type: "label_flip"
+    malicious_fraction: 0.20
+    global_rounds: 2
+    local_epochs: 1
+
+  - run_id: "smoke_e5_prov_tamper"
+    experiment_type: "E5_PROVENANCE_ATTACKS"
+    method: "prorag_fl"
+    num_clients: 3
+    attack_type: "digest_tamper"
+    malicious_fraction: 0.33
+    global_rounds: 2
+    local_epochs: 1
+
+  - run_id: "smoke_e6_unseen_mirai"
+    experiment_type: "E6_UNSEEN_TO_MODEL"
+    method: "prorag_fl"
+    num_clients: 3
+    parameters:
+      held_out_family: "Mirai"
+    global_rounds: 2
+    local_epochs: 1
+
+  - run_id: "smoke_e7_rag_poison_prompt_inj"
+    experiment_type: "E7_RAG_POISONING"
+    method: "prorag_fl"
+    num_clients: 3
+    attack_type: "prompt_injection"
+    rag_poison_fraction: 0.10
+    global_rounds: 2
+    local_epochs: 1
+
+  - run_id: "smoke_e8_ablation_a2"
+    experiment_type: "E8_ABLATION"
+    method: "ablation"
+    ablation_id: "A2"
+    num_clients: 3
+    alpha: 0.3
+    global_rounds: 2
+    local_epochs: 1
+
+  - run_id: "smoke_e9_systems_overhead"
+    experiment_type: "E9_SYSTEMS"
+    method: "prorag_fl"
+    num_clients: 3
+    global_rounds: 2
+    local_epochs: 1
+
+  - run_id: "smoke_e10_sens_beta_tc"
+    experiment_type: "E10_VALIDATION_SENSITIVITY"
+    method: "prorag_fl"
+    num_clients: 3
+    parameters:
+      beta: 0.20
+      tau_c: 0.80
+    global_rounds: 2
+    local_epochs: 1

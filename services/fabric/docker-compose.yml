@@ -1,0 +1,124 @@
+version: '3.8'
+
+networks:
+  prorag-fabric-net:
+    name: prorag-fabric-net
+
+volumes:
+  orderer1.example.com:
+  orderer2.example.com:
+  orderer3.example.com:
+  peer0.org1.example.com:
+  peer0.org2.example.com:
+  peer0.org3.example.com:
+
+services:
+  # Raft Orderer Nodes (3 orderers for crash fault tolerance)
+  orderer1.example.com:
+    image: hyperledger/fabric-orderer:2.5
+    container_name: orderer1.example.com
+    environment:
+      - FABRIC_LOGGING_SPEC=INFO
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_LISTENPORT=7050
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+    ports:
+      - "7050:7050"
+    networks:
+      - prorag-fabric-net
+    volumes:
+      - orderer1.example.com:/var/hyperledger/production/orderer
+
+  orderer2.example.com:
+    image: hyperledger/fabric-orderer:2.5
+    container_name: orderer2.example.com
+    environment:
+      - FABRIC_LOGGING_SPEC=INFO
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_LISTENPORT=7053
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+    ports:
+      - "7053:7053"
+    networks:
+      - prorag-fabric-net
+    volumes:
+      - orderer2.example.com:/var/hyperledger/production/orderer
+
+  orderer3.example.com:
+    image: hyperledger/fabric-orderer:2.5
+    container_name: orderer3.example.com
+    environment:
+      - FABRIC_LOGGING_SPEC=INFO
+      - ORDERER_GENERAL_LISTENADDRESS=0.0.0.0
+      - ORDERER_GENERAL_LISTENPORT=7055
+      - ORDERER_GENERAL_LOCALMSPID=OrdererMSP
+      - ORDERER_GENERAL_BOOTSTRAPMETHOD=none
+      - ORDERER_CHANNELPARTICIPATION_ENABLED=true
+    ports:
+      - "7055:7055"
+    networks:
+      - prorag-fabric-net
+    volumes:
+      - orderer3.example.com:/var/hyperledger/production/orderer
+
+  # Peer Nodes (Org1, Org2, Org3)
+  peer0.org1.example.com:
+    image: hyperledger/fabric-peer:2.5
+    container_name: peer0.org1.example.com
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - FABRIC_LOGGING_SPEC=INFO
+      - CORE_PEER_ID=peer0.org1.example.com
+      - CORE_PEER_ADDRESS=peer0.org1.example.com:7051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:7051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.org1.example.com:7052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:7052
+      - CORE_PEER_LOCALMSPID=Org1MSP
+    ports:
+      - "7051:7051"
+    networks:
+      - prorag-fabric-net
+    volumes:
+      - peer0.org1.example.com:/var/hyperledger/production
+
+  peer0.org2.example.com:
+    image: hyperledger/fabric-peer:2.5
+    container_name: peer0.org2.example.com
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - FABRIC_LOGGING_SPEC=INFO
+      - CORE_PEER_ID=peer0.org2.example.com
+      - CORE_PEER_ADDRESS=peer0.org2.example.com:8051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:8051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.org2.example.com:8052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:8052
+      - CORE_PEER_LOCALMSPID=Org2MSP
+    ports:
+      - "8051:8051"
+    networks:
+      - prorag-fabric-net
+    volumes:
+      - peer0.org2.example.com:/var/hyperledger/production
+
+  peer0.org3.example.com:
+    image: hyperledger/fabric-peer:2.5
+    container_name: peer0.org3.example.com
+    environment:
+      - CORE_VM_ENDPOINT=unix:///host/var/run/docker.sock
+      - FABRIC_LOGGING_SPEC=INFO
+      - CORE_PEER_ID=peer0.org3.example.com
+      - CORE_PEER_ADDRESS=peer0.org3.example.com:9051
+      - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
+      - CORE_PEER_CHAINCODEADDRESS=peer0.org3.example.com:9052
+      - CORE_PEER_CHAINCODELISTENADDRESS=0.0.0.0:9052
+      - CORE_PEER_LOCALMSPID=Org3MSP
+    ports:
+      - "9051:9051"
+    networks:
+      - prorag-fabric-net
+    volumes:
+      - peer0.org3.example.com:/var/hyperledger/production

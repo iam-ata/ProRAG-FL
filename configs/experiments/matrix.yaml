@@ -1,0 +1,162 @@
+# ProRAG-FL Frozen Experiment Matrix Specification
+# Adheres strictly to instructions/23_EXPERIMENT_MATRIX.md and instructions/41_FULL_MATRIX_PLANNING_AND_COST_CONTROL.md
+
+matrix_version: "1.0.0"
+description: "Authoritative frozen experiment matrix across seeds [13, 37, 73, 101, 211]"
+
+datasets:
+  - "ciciot2023"
+  - "edge_iiotset"
+
+seeds:
+  - 13
+  - 37
+  - 73
+  - 101
+  - 211
+
+experiments:
+  e1_sanity:
+    description: "E1: Local 1D-CNN vs Centralized Oracle Ceiling"
+    methods:
+      - "b0_local"
+      - "b1_centralized"
+    global_rounds: 1
+    local_epochs: 5
+
+  e2_heterogeneity:
+    description: "E2: FL Heterogeneity across Dirichlet non-IID partitions"
+    num_clients: 10
+    alphas:
+      - null   # IID
+      - 1.0
+      - 0.5
+      - 0.3
+      - 0.1
+    methods:
+      - "fedavg"
+      - "multikrum"
+      - "fedtrimmedavg"
+      - "sflnid"
+      - "pfl_ids"
+      - "prorag_fl"
+    global_rounds: 20
+    local_epochs: 2
+
+  e3_scalability:
+    description: "E3: Client Scaling (K=5, 10, 20)"
+    scales:
+      - 5
+      - 10
+      - 20
+    alpha: 0.3
+    methods:
+      - "fedtrimmedavg"
+      - "prorag_fl"
+    global_rounds: 15
+    local_epochs: 2
+
+  e4_malicious_clients:
+    description: "E4: Byzantine update poisoning and backdoors"
+    num_clients: 10
+    alpha: 0.3
+    malicious_fractions:
+      - 0.10
+      - 0.20
+      - 0.30
+      - 0.40
+    attacks:
+      - "label_flip"
+      - "sign_flip"
+      - "model_replacement"
+      - "backdoor"
+    methods:
+      - "fedavg"
+      - "multikrum"
+      - "fedtrimmedavg"
+      - "flow"
+      - "pfl_ids"
+      - "prorag_fl"
+    global_rounds: 15
+    local_epochs: 2
+
+  e5_provenance_attacks:
+    description: "E5: Blockchain ledger & provenance verification tampering"
+    num_clients: 10
+    malicious_fraction: 0.20
+    attacks:
+      - "digest_tamper"
+      - "nonce_replay"
+      - "stale_round"
+      - "wrong_version"
+      - "unauthorized_identity"
+      - "revoked_status"
+    method: "prorag_fl"
+    global_rounds: 5
+    local_epochs: 1
+
+  e6_unseen_to_model:
+    description: "E6: Zero-day unseen family escalation & LLM reasoning"
+    num_clients: 10
+    held_out_families:
+      ciciot2023: "Mirai"
+      edge_iiotset: "Malware"
+    methods:
+      - "ids_only"
+      - "fedmse"
+      - "standard_rag"
+      - "rlfe_ids"
+      - "prorag_fl"
+    global_rounds: 10
+    local_epochs: 2
+
+  e7_rag_poisoning:
+    description: "E7: Knowledge corpus poisoning & prompt injection"
+    rag_fractions:
+      - 0.05
+      - 0.10
+      - 0.20
+      - 0.30
+    attacks:
+      - "knowledge_tampering"
+      - "unauthorized_insertion"
+      - "stale_replay"
+      - "prompt_injection"
+      - "malicious_source"
+    methods:
+      - "standard_rag"
+      - "hard_gate_rag"
+      - "provenance_freshness_rag"
+      - "prorag_fl"
+    global_rounds: 5
+    local_epochs: 1
+
+  e8_ablation:
+    description: "E8: Main Ablation Ladder (A0 to A6)"
+    num_clients: 10
+    alpha: 0.3
+    ladders:
+      - "A0"  # FedAvg + 1D-CNN
+      - "A1"  # FedTrimmedAvg + 1D-CNN
+      - "A2"  # Provenance-gated FedTrimmedAvg
+      - "A3"  # A2 + ordinary hybrid RAG
+      - "A4"  # A2 + hard provenance RAG (no freshness/corroboration)
+      - "A5"  # Routing disabled (all-event RAG)
+      - "A6"  # Full ProRAG-FL
+    global_rounds: 15
+    local_epochs: 2
+
+  e9_systems:
+    description: "E9: Systems Latency, Ledger Overhead, and Communication"
+    num_clients: 10
+    method: "prorag_fl"
+    global_rounds: 10
+    local_epochs: 2
+
+  e10_validation_sensitivity:
+    description: "E10: Validation-only Hyperparameter Grid Search"
+    num_clients: 10
+    betas: [0.10, 0.15, 0.20, 0.25]
+    tau_cs: [0.60, 0.75, 0.90]
+    global_rounds: 10
+    local_epochs: 1

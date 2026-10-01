@@ -1,0 +1,99 @@
+{
+  "dataset_name": "edge_iiotset",
+  "raw_to_canonical": {
+    "MITM": "MITM",
+    "Fingerprinting": "Fingerprinting",
+    "Ransomware": "Ransomware",
+    "Uploading": "Uploading",
+    "SQL_injection": "SQL_injection",
+    "DDoS_HTTP": "DDoS_HTTP",
+    "DDoS_TCP": "DDoS_TCP",
+    "Password": "Password",
+    "Port_Scanning": "Port_Scanning",
+    "Vulnerability_scanner": "Vulnerability_scanner",
+    "Backdoor": "Backdoor",
+    "XSS": "XSS",
+    "Normal": "Normal",
+    "DDoS_UDP": "DDoS_UDP",
+    "DDoS_ICMP": "DDoS_ICMP"
+  },
+  "canonical_to_id": {
+    "Benign": 0,
+    "DDoS": 1,
+    "Recon": 2,
+    "Web": 3,
+    "Spoofing": 4,
+    "Malware": 5
+  },
+  "id_to_canonical": {
+    "0": "Benign",
+    "1": "DDoS",
+    "2": "Recon",
+    "3": "Web",
+    "4": "Spoofing",
+    "5": "Malware"
+  },
+  "family_mapping": {
+    "normal": "Benign",
+    "benign": "Benign",
+    "ddos_udp": "DDoS",
+    "ddos_icmp": "DDoS",
+    "ddos_tcp": "DDoS",
+    "ddos_http": "DDoS",
+    "port_scanning": "Recon",
+    "vulnerability_scanner": "Recon",
+    "fingerprinting": "Recon",
+    "sql_injection": "Web",
+    "xss": "Web",
+    "password": "Web",
+    "mitm": "Spoofing",
+    "backdoor": "Malware",
+    "ransomware": "Malware",
+    "uploading": "Malware"
+  },
+  "class_details": {
+    "Spoofing": {
+      "class_id": 4,
+      "canonical_name": "Spoofing",
+      "family": "Spoofing",
+      "is_attack": true,
+      "is_held_out": false
+    },
+    "Recon": {
+      "class_id": 2,
+      "canonical_name": "Recon",
+      "family": "Recon",
+      "is_attack": true,
+      "is_held_out": false
+    },
+    "Malware": {
+      "class_id": 5,
+      "canonical_name": "Malware",
+      "family": "Malware",
+      "is_attack": true,
+      "is_held_out": true
+    },
+    "Web": {
+      "class_id": 3,
+      "canonical_name": "Web",
+      "family": "Web",
+      "is_attack": true,
+      "is_held_out": false
+    },
+    "DDoS": {
+      "class_id": 1,
+      "canonical_name": "DDoS",
+      "family": "DDoS",
+      "is_attack": true,
+      "is_held_out": false
+    },
+    "Benign": {
+      "class_id": 0,
+      "canonical_name": "Benign",
+      "family": "Benign",
+      "is_attack": false,
+      "is_held_out": false
+    }
+  },
+  "num_classes": 6
+}

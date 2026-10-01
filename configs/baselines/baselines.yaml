@@ -1,0 +1,161 @@
+# ProRAG-FL Baselines Configuration
+# Adheres strictly to instructions/20_BASELINES_MASTER.md and 21_BASELINE_IMPLEMENTATION_DETAILS.md
+
+baselines:
+  b0_local_1dcnn:
+    baseline_id: "B0"
+    name: "Local-1D-CNN"
+    fidelity_tier: "faithful_reimplementation"
+    model: "IDS1DCNN"
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    batch_size: 128
+    epochs: 5
+    description: "Independent per-client training on immutable partitions without collaboration"
+
+  b1_centralized_1dcnn:
+    baseline_id: "B1"
+    name: "Centralized-1D-CNN"
+    fidelity_tier: "faithful_reimplementation"
+    model: "IDS1DCNN"
+    learning_rate: 0.001
+    weight_decay: 0.0001
+    batch_size: 128
+    epochs: 10
+    description: "Oracle reference trained on unpartitioned union of client training partitions"
+
+  b2_fedavg:
+    baseline_id: "B2"
+    name: "FedAvg-1D-CNN"
+    fidelity_tier: "faithful_reimplementation"
+    strategy: "fedavg"
+    model: "IDS1DCNN"
+    rounds: 50
+    local_epochs: 2
+    batch_size: 128
+    fraction_fit: 1.0
+    description: "Standard federated averaging weighted by sample count without provenance gating"
+
+  b3_multikrum:
+    baseline_id: "B3"
+    name: "MultiKrum-1D-CNN"
+    fidelity_tier: "faithful_reimplementation"
+    strategy: "multikrum"
+    model: "IDS1DCNN"
+    rounds: 50
+    local_epochs: 2
+    batch_size: 128
+    fraction_fit: 1.0
+    num_byzantine: 1
+    description: "Byzantine-robust update distance scoring without blockchain validation"
+
+  b4_fedtrimmedavg:
+    baseline_id: "B4"
+    name: "FedTrimmedAvg-1D-CNN"
+    fidelity_tier: "faithful_reimplementation"
+    strategy: "fedtrimmedavg"
+    model: "IDS1DCNN"
+    rounds: 50
+    local_epochs: 2
+    batch_size: 128
+    fraction_fit: 1.0
+    beta: 0.20
+    description: "Coordinate-wise trimmed mean aggregation (beta=0.20) without blockchain provenance"
+
+  b5_sflnid:
+    baseline_id: "B5"
+    name: "SFLNID"
+    fidelity_tier: "faithful_reimplementation"
+    doi: "10.1109/JIOT.2025.3591598"
+    architecture: "CNN-GRU"
+    focal_gamma: 2.0
+    wasserstein_weight: 0.05
+    holt_alpha: 0.3
+    holt_beta: 0.1
+    dp_noise_multiplier: 0.01
+    rounds: 50
+    local_epochs: 2
+    batch_size: 128
+    description: "Native CNN-GRU, Focal Loss, Wasserstein regularization, and Holt dynamic clipping DP"
+
+  b6_flow:
+    baseline_id: "B6"
+    name: "FLOW"
+    fidelity_tier: "faithful_reimplementation"
+    doi: "10.1109/JIOT.2023.3341811"
+    model: "IDS1DCNN"
+    distance_metric: "pairwise_cosine"
+    anomaly_threshold_std: 1.5
+    penalty_rate: 0.5
+    recovery_rate: 0.2
+    rounds: 50
+    local_epochs: 2
+    batch_size: 128
+    description: "Pairwise cosine distance anomaly detection and graceful historical punishment"
+
+  b7_bc2fl:
+    baseline_id: "B7"
+    name: "Bc2FL"
+    fidelity_tier: "approximate_reimplementation"
+    doi: "10.1109/JIOT.2024.3485208"
+    model: "IDS1DCNN"
+    num_edge_clusters: 2
+    consensus_mode: "Mode B - Component/System Comparison"
+    rounds: 50
+    local_epochs: 2
+    batch_size: 128
+    description: "Hierarchical double-layer blockchain consensus and model quality scoring"
+
+  b8_rlfe_ids:
+    baseline_id: "B8"
+    name: "RLFE-IDS"
+    fidelity_tier: "faithful_reimplementation"
+    doi: "10.1016/j.comnet.2025.111341"
+    embedding_network: "FENet"
+    embedding_dim: 128
+    retrieval_k: 3
+    retrieval_metric: "cosine"
+    description: "FE-Net embeddings + unverified vector knowledge retrieval without Merkle/blockchain provenance"
+
+  b9_lqb_ids:
+    baseline_id: "B9"
+    name: "LQB-IDS"
+    fidelity_tier: "approximate_reimplementation"
+    doi: "10.1016/j.comnet.2025.111819"
+    autoencoder: "DCAE"
+    bottleneck_dim: 16
+    switch_percentile: 95.0
+    credit_initial: 100.0
+    credit_max: 200.0
+    description: "DCAE dual-switch routing between fast known-pattern classifier and anomaly path"
+
+  b10_fedmse:
+    baseline_id: "B10"
+    name: "FedMSE"
+    fidelity_tier: "faithful_reimplementation"
+    doi: "10.1016/j.cose.2025.104337"
+    autoencoder: "ShrinkAutoencoder"
+    latent_dim: 16
+    shrink_lambda: 0.01
+    radius_percentile: 95.0
+    classifier: "CentroidOneClass"
+    evaluation_scope: "binary_anomaly"
+    rounds: 50
+    local_epochs: 2
+    batch_size: 128
+    description: "Semi-supervised shrink autoencoder with one-class centroid anomaly classifier"
+
+  b11_pfl_ids:
+    baseline_id: "B11"
+    name: "pFL-IDS"
+    fidelity_tier: "faithful_reimplementation"
+    doi: "10.1016/j.future.2023.10.005"
+    model: "IDS1DCNN"
+    tau_logit_adjustment: 1.0
+    phase1_cosine_threshold: 0.0
+    phase2_centroid_mad_factor: 1.5
+    personalization: true
+    rounds: 50
+    local_epochs: 2
+    batch_size: 128
+    description: "Logit-adjusted loss and two-phase cosine-similarity/benign centroid defense"
