@@ -152,8 +152,8 @@ ProRAG-FL/
 
 ```bash
 # Clone the repository
-git clone https://github.com/atamohammadi/ProRAG-FL.git
-cd ProRAG-FL/Code
+git clone https://github.com/iam-ata/ProRAG-FL.git
+cd ProRAG-FL
 
 # Create conda environment from specification
 conda env create -f environment.yml
@@ -213,6 +213,9 @@ Outputs are written to `reports/paper_exports/`:
 - `figures/fig_ablation_ladder.pdf` / `.png`
 - `figures/fig_byzantine_resilience.pdf` / `.png`
 - `figures/fig_roc_ood.pdf` / `.png`
+- `figures/fig_baseline_macro_f1.pdf` / `.png`
+- `figures/fig_baseline_pareto.pdf` / `.png`
+- `figures/prorag_architecture_clean.png`
 - `claims.json` (maps RQ1–RQ4 to verified run IDs and FDR p-values)
 
 ### 5. Safe Manuscript Synchronization
@@ -269,7 +272,7 @@ Or cite the software release directly via Zenodo:
   publisher    = {Zenodo},
   version      = {v0.1.0},
   doi          = {10.5281/zenodo.xxxxxx},
-  url          = {https://github.com/atamohammadi/ProRAG-FL}
+  url          = {https://github.com/iam-ata/ProRAG-FL}
 }
 ```
 
