@@ -1,13 +1,13 @@
-# ProRAG-FL v0.1.0 — Initial Research Release & Reproducibility Suite
+# ProRAG-FL v1.0.0 — Official Research Release & Reproducibility Suite
 
 [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB.svg?logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-2.1%2Bcu130-EE4C2C.svg?logo=pytorch&logoColor=white)](https://pytorch.org/)
 [![Tests](https://img.shields.io/badge/Tests-152%2F152%20Passing-brightgreen.svg?logo=pytest&logoColor=white)](https://docs.pytest.org/)
 [![Audit](https://img.shields.io/badge/Reproducibility%20Audit-48%2F48%20Passed-success.svg)](reports/audit/reproducibility_audit_report.md)
-[![Zenodo](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.xxxxxx-blue.svg)](https://zenodo.org/)
+[![DOI](https://zenodo.org/badge/1400577850.svg)](https://doi.org/10.5281/zenodo.23089427)
 
-We are pleased to announce the initial open-source research release of **ProRAG-FL** (`v0.1.0`), accompanying our paper:
+We are pleased to announce the official open-source research release of **ProRAG-FL** (`v1.0.0`), accompanying our paper:
 > **"ProRAG-FL: Blockchain-Anchored Provenance-Aware Retrieval-Augmented Federated Intrusion Detection for Cloud-IoT Systems"** (Submitted to *IEEE Internet of Things Journal*).
 
 This release provides the complete, mathematically audited, zero-leakage research framework, benchmark suites, 12 competitive baseline IDS models, and automated reproduction engines.
@@ -145,7 +145,7 @@ If you use ProRAG-FL in your academic research, please cite:
   year         = 2026,
   publisher    = {Zenodo},
   version      = {v1.0.0},
-  doi          = {10.5281/zenodo.xxxxxx},
+  doi          = {10.5281/zenodo.23089427},
   url          = {https://github.com/iam-ata/ProRAG-FL}
 }
 ```

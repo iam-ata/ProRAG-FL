@@ -2,7 +2,8 @@ cff-version: 1.2.0
 message: "If you use this software, experimental framework, or benchmark artifacts, please cite it as below."
 title: "ProRAG-FL: Blockchain-Anchored Provenance-Aware Retrieval-Augmented Federated Intrusion Detection for Cloud-IoT Systems"
 abstract: "ProRAG-FL introduces a three-tier decoupled trust architecture resolving model, knowledge, and decision trust for Cloud-IoT federated intrusion detection. Incorporates locked 1D-CNN backbone, temperature scaling calibration, class-conditional Mahalanobis OOD detection, Hyperledger Fabric provenance validation, deterministic Merkle knowledge integrity, hybrid BGE-M3/BM25 retrieval with 6-check Hard Provenance Filtering, and structured LLM incident reporting."
-version: 0.1.0
+version: 1.0.0
+doi: "10.5281/zenodo.23089427"
 date-released: 2026-09-28
 license: Apache-2.0
 repository-code: "https://github.com/iam-ata/ProRAG-FL"

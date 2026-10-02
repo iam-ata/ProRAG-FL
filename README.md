@@ -7,7 +7,7 @@
 [![Tests](https://img.shields.io/badge/Tests-152%2F152%20Passing-brightgreen.svg?logo=pytest&logoColor=white)](https://docs.pytest.org/)
 [![Ruff](https://img.shields.io/badge/Code%20Style-Ruff-000000.svg)](https://astral.sh/ruff)
 [![Audit](https://img.shields.io/badge/Reproducibility%20Audit-48%2F48%20Passed-success.svg)](reports/audit/reproducibility_audit_report.md)
-[![DOI](https://img.shields.io/badge/DOI-10.5281%2Fzenodo.xxxxxx-blue.svg)](https://zenodo.org/)
+[![DOI](https://zenodo.org/badge/1400577850.svg)](https://doi.org/10.5281/zenodo.23089427)
 
 ---
 
@@ -290,7 +290,7 @@ Or cite the software release directly via Zenodo:
   year         = 2026,
   publisher    = {Zenodo},
   version      = {v1.0.0},
-  doi          = {10.5281/zenodo.xxxxxx},
+  doi          = {10.5281/zenodo.23089427},
   url          = {https://github.com/iam-ata/ProRAG-FL}
 }
 ```
