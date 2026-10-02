@@ -11,9 +11,9 @@ requires-python = ">=3.11"
 authors = [
     { name = "Ata Mohammadi" },
     { name = "Nahideh Derakhshanfard", email = "N.derakhshan@iau.ac.ir" },
-    { name = "Amir Mollanejad" },
     { name = "Ali Asghar Pour Haji Kazem" },
     { name = "Neda Dadashkhani" },
+    { name = "Wael Anabousi", email = "w.anbousi@ammanu.edu.jo" },
     { name = "Parisa Khoshvaght", email = "parisakhoshvaght@duytan.edu.vn" },
     { name = "Mehdi Hosseinzadeh", email = "mehdihosseinzadeh@duytan.edu.vn" },
 ]

@@ -17,13 +17,15 @@ We are proud to announce the **v1.0.0 official research release** of **ProRAG-FL
 > *Submitted to IEEE Internet of Things Journal (2026)*
 
 **Authors:**  
-Ata Mohammadi$^1$, Nahideh Derakhshanfard$^1$ (Corresponding Author), Amir Mollanejad$^2$, Ali Asghar Pour Haji Kazem$^3$, Neda Dadashkhani$^4$, Parisa Khoshvaght$^5$, and Mehdi Hosseinzadeh$^6$ (Corresponding Author)
+Ata Mohammadi$^1$, Nahideh Derakhshanfard$^1$ (Corresponding Author), Ali Asghar Pour Haji Kazem$^2$, Neda Dadashkhani$^3$, Wael Anabousi$^4$, Parisa Khoshvaght$^5$, and Mehdi Hosseinzadeh$^6$ (Corresponding Author)
 
 $^1$ Department of Computer Engineering, Ta.C., Islamic Azad University, Tabriz, Iran  
-$^2$ Department of Computer Engineering, Aras C., Islamic Azad University, Jolfa, Iran  
-$^3$ Department of Software Engineering, Faculty of Engineering and Natural Sciences, Istinye University, Istanbul, Turkey  
-$^4$ Computer Programming Program, Vocational School, Istinye University, Istanbul, Turkey  
+$^2$ Department of Software Engineering, Faculty of Engineering and Natural Sciences, Istinye University, Istanbul, Turkey  
+$^3$ Computer Programming Program, Vocational School, Istinye University, Istanbul, Turkey  
+$^4$ e-Learning department, Al-Ahliyya Amman University, Amman, Jordan  
+   *(E-mail: `w.anbousi@ammanu.edu.jo`, ORCID: [0009-0004-3913-939X](https://orcid.org/0009-0004-3913-939X))*  
 $^5$ Institute of Research and Development, Duy Tan University, Da Nang, Vietnam  
+   *(E-mail: `parisakhoshvaght@duytan.edu.vn`)*  
 $^6$ School of Engineering & Technology, Duy Tan University, Da Nang, Vietnam  
 
 **Corresponding Contacts:**  
@@ -172,7 +174,7 @@ ProRAG-FL/
 
 ```bibtex
 @article{mohammadi2026proragfl,
-  author    = {Mohammadi, Ata and Derakhshanfard, Nahideh and Mollanejad, Amir and Pour Haji Kazem, Ali Asghar and Dadashkhani, Neda and Khoshvaght, Parisa and Hosseinzadeh, Mehdi},
+  author    = {Mohammadi, Ata and Derakhshanfard, Nahideh and Pour Haji Kazem, Ali Asghar and Dadashkhani, Neda and Anabousi, Wael and Khoshvaght, Parisa and Hosseinzadeh, Mehdi},
   title     = {ProRAG-FL: Blockchain-Anchored Provenance-Aware Retrieval-Augmented Federated Intrusion Detection for Cloud-IoT Systems},
   journal   = {IEEE Internet of Things Journal},
   year      = {2026},
@@ -182,7 +184,7 @@ ProRAG-FL/
 
 ```bibtex
 @software{mohammadi_2026_proragfl_code,
-  author       = {Mohammadi, Ata and Derakhshanfard, Nahideh and Mollanejad, Amir and Pour Haji Kazem, Ali Asghar and Dadashkhani, Neda and Khoshvaght, Parisa and Hosseinzadeh, Mehdi},
+  author       = {Mohammadi, Ata and Derakhshanfard, Nahideh and Pour Haji Kazem, Ali Asghar and Dadashkhani, Neda and Anabousi, Wael and Khoshvaght, Parisa and Hosseinzadeh, Mehdi},
   title        = {ProRAG-FL: Reproducible Research Benchmark and Implementation Artifact},
   month        = sep,
   year         = 2026,
